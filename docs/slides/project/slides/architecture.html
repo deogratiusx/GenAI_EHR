@@ -1,0 +1,10 @@
+<section id="architecture" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:96px 128px 64px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;justify-content:space-between;align-items:end">
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:56px;font-weight:700;color:#0f0d22;line-height:1.15">Architecture: layers, not iterations</h2>
+<p style="font-size:24px;color:#791cbe">ehr_agent/ · 46 unit tests</p>
+</div>
+<div style="flex:1;display:flex;justify-content:center;background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:16px">
+<img src="/_blob/352ec087010b41ee02696a6782a492eb" alt="Layer diagram: agent with harness and model backends; 12 tools; knowledge bases and hybrid search; data sources; evaluation modules" style="width:1600px;height:780px;object-fit:contain">
+</div>
+<aside>Dependencies point downwards. The model sees only tool specs and their JSON outputs; reference ranges, arithmetic, search and record access are deterministic code. Evaluation on the right uses every layer; no layer depends on it. Diagram labels are in Russian; key terms: агент = agent, обвязка = harness, инструменты = tools, базы знаний = knowledge, источники = sources, оценка = evaluation.</aside>
+</section>

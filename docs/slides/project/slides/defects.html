@@ -1,0 +1,16 @@
+<section id="defects" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Problems we hit</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">Most surprises were in the evaluation, not the model</h2>
+</div>
+<table style="font-size:26px;color:#1f1b3a">
+<tr><th style="width:36%">Problem</th><th style="width:36%">Consequence</th><th style="width:28%">Fix</th></tr>
+<tr><td>GigaChat rejects a forced final call with the full function list (HTTP 422)</td><td>hard episodes lost → Lite scores inflated by up to ~0.1</td><td>send only final_answer on forced turns</td></tr>
+<tr><td>Inpatient record up to ~200k tokens</td><td>whole-record baseline not applicable</td><td>status N/A + map-reduce baseline</td></tr>
+<tr><td>Harness feedback made Lite worse</td><td>“here are the ids…” replaced the answer</td><td>keep the first substantive answer</td></tr>
+<tr><td>Id regex missed the check-up format</td><td>“100 % retrieval failures” was an artifact</td><td>corrected, noted in the report</td></tr>
+<tr><td>Patient name printed in capitals</td><td>masking missed one PDF block</td><td>case-insensitive masking + PII audit</td></tr>
+</table>
+<p style="font-size:26px;color:#6b6680">All defects and their effect on earlier numbers are documented in REPORT.md §9.</p>
+<aside>The lesson: an agent benchmark has as many failure points as the agent. Silent backend errors that drop episodes bias results towards easy questions. Every fix here was found by reading traces, not aggregate scores.</aside>
+</section>

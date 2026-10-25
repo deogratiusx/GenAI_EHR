@@ -1,0 +1,10 @@
+line-length = 140
+target-version = "py311"
+extend-exclude = ["archive", "models", "data", "runs"]
+
+[lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501", "E741", "B905"]  # long data tables, `l` as a line variable, zip(strict=)
+
+[lint.isort]
+known-first-party = ["ehr_agent"]

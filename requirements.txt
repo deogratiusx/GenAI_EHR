@@ -1,0 +1,11 @@
+# Python 3.12. Versions are the ones the experiments ran with.
+openpyxl==3.1.5            # check-up xlsx exports
+pandas==3.1.0
+numpy==2.5.4
+pymupdf==2.0               # PDF case histories
+sentence-transformers==6.2.0   # dense retrieval (multilingual-e5-small, CPU)
+mlx-lm==0.32.2             # local Qwen3.5-4B / Med-Qwen on Apple Silicon
+matplotlib==3.11.2         # report figures
+streamlit==1.66.1          # demo app
+pytest                     # tests
+ruff                       # lint and format (ruff.toml)

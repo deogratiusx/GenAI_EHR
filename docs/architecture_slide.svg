@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 916" width="1120" height="916" role="img" aria-labelledby="t d">
+<title id="t">EHR agent architecture</title>
+<desc id="d">Layers: agent (harness, loop, model backends), tools, knowledge and search, data sources; evaluation on the right.</desc>
+
+<defs>
+  <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#6b6a65"/></marker>
+  <marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#2a78d6"/></marker>
+  <marker id="me" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#8a5a12"/></marker>
+</defs>
+<rect x="0" y="0" width="1120" height="916" style="fill:#fcfcfb"/>
+
+<!-- input / output -->
+<rect x="90" y="14" width="260" height="38" rx="19" style="fill:#ffffff; stroke:#1d1d1b; stroke-width:1.2"/>
+<text x="220" y="38" text-anchor="middle" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">Doctor’s question</text>
+<rect x="500" y="14" width="320" height="38" rx="19" style="fill:#ffffff; stroke:#1d1d1b; stroke-width:1.2"/>
+<text x="660" y="38" text-anchor="middle" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">Answer: text + row ids + status</text>
+<line x1="220" y1="52" x2="220" y2="82" marker-end="url(#ma)" style="stroke:#2a78d6; stroke-width:1.4; fill:none"/>
+<line x1="660" y1="84" x2="660" y2="54" marker-end="url(#ma)" style="stroke:#2a78d6; stroke-width:1.4; fill:none"/>
+
+<!-- agent layer -->
+<rect x="20" y="84" width="800" height="190" rx="10" style="fill:#eaf2fc; stroke:#9cc0ec; stroke-width:1"/>
+<text x="36" y="106" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#2a78d6; font-size:13px; font-weight:650">agent/</text>
+
+<rect x="36" y="118" width="250" height="140" rx="7" style="fill:#ffffff; stroke:#9cc0ec; stroke-width:1"/>
+<text x="50" y="140" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">harness</text>
+<text x="50" y="162" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">routing by intent</text>
+<text x="50" y="180" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">answer checks: row ids,</text>
+<text x="50" y="196" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">numbers, “not found”</text>
+<text x="50" y="214" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">answer format repair</text>
+<text x="50" y="232" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">report completeness, verdicts</text>
+
+<rect x="316" y="118" width="208" height="140" rx="7" style="fill:#ffffff; stroke:#9cc0ec; stroke-width:1"/>
+<text x="330" y="140" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">loop — episode</text>
+<text x="330" y="162" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">model → call → result</text>
+<text x="330" y="180" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">budget: 4 calls</text>
+<text x="330" y="198" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">cache for repeated calls</text>
+<text x="330" y="216" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">systems.py:</text>
+<text x="330" y="232" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">11 configurations</text>
+
+<rect x="554" y="118" width="250" height="140" rx="7" style="fill:#ffffff; stroke:#9cc0ec; stroke-width:1"/>
+<text x="568" y="140" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">llm — model backends</text>
+<text x="568" y="162" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">GigaChat-2 Lite / Max</text>
+<text x="568" y="178" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">API, data in Russia</text>
+<text x="568" y="202" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">Qwen3.5-4B, Med-Qwen-4B</text>
+<text x="568" y="218" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">MLX, 4-bit, local</text>
+<text x="568" y="242" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">prompt limit → context_overflow</text>
+
+<line x1="288" y1="188" x2="314" y2="188" marker-start="url(#ma)" marker-end="url(#ma)" style="stroke:#2a78d6; stroke-width:1.4; fill:none"/>
+<line x1="526" y1="188" x2="552" y2="188" marker-start="url(#ma)" marker-end="url(#ma)" style="stroke:#2a78d6; stroke-width:1.4; fill:none"/>
+
+<!-- agent ↔ tools -->
+<line x1="390" y1="276" x2="390" y2="312" marker-end="url(#ma)" style="stroke:#2a78d6; stroke-width:1.4; fill:none"/>
+<line x1="450" y1="312" x2="450" y2="276" marker-end="url(#ma)" style="stroke:#2a78d6; stroke-width:1.4; fill:none"/>
+<text x="380" y="298" text-anchor="end" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11px">call with JSON arguments</text>
+<text x="460" y="298" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11px">result within budget, with row ids and next_offset</text>
+
+<!-- tools layer -->
+<rect x="20" y="314" width="800" height="150" rx="10" style="fill:#eaf2fc; stroke:#9cc0ec; stroke-width:1"/>
+<text x="36" y="336" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#2a78d6; font-size:13px; font-weight:650">tools/ — 12 tools + final_answer</text>
+
+<rect x="36" y="348" width="144" height="104" rx="7" style="fill:#ffffff; stroke:#9cc0ec; stroke-width:1"/>
+<text x="48" y="368" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">text</text>
+<text x="48" y="386" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_overview</text>
+<text x="48" y="400" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">search_notes</text>
+<text x="48" y="414" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_conclusions</text>
+<text x="48" y="428" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_diagnoses</text>
+<text x="48" y="442" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_document</text>
+
+<rect x="192" y="348" width="144" height="104" rx="7" style="fill:#ffffff; stroke:#9cc0ec; stroke-width:1"/>
+<text x="204" y="368" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">labs</text>
+<text x="204" y="386" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_lab</text>
+<text x="204" y="400" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">list_abnormal_labs</text>
+<text x="204" y="414" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_trend</text>
+<text x="204" y="428" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">calculate</text>
+
+<rect x="348" y="348" width="144" height="104" rx="7" style="fill:#ffffff; stroke:#9cc0ec; stroke-width:1"/>
+<text x="360" y="368" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">quality</text>
+<text x="360" y="386" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">check_consistency</text>
+<text x="360" y="404" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">+ quality marks</text>
+<text x="360" y="418" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">on lab values</text>
+
+<rect x="504" y="348" width="144" height="104" rx="7" style="fill:#ffffff; stroke:#9cc0ec; stroke-width:1"/>
+<text x="516" y="368" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">clinical · summary</text>
+<text x="516" y="386" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_medications</text>
+<text x="516" y="400" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">get_studies</text>
+<text x="516" y="420" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">build_dossier</text>
+<text x="516" y="436" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">+ report schema</text>
+
+<rect x="660" y="348" width="144" height="104" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1; stroke-dasharray:4 3"/>
+<text x="672" y="368" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">baselines</text>
+<text x="672" y="386" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">run_python</text>
+<text x="672" y="404" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">whole record as text</text>
+<text x="672" y="418" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">in the prompt</text>
+<text x="672" y="440" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">or in chunks</text>
+
+<!-- tools → knowledge -->
+<line x1="420" y1="466" x2="420" y2="494" marker-end="url(#m)" style="stroke:#6b6a65; stroke-width:1.4; fill:none"/>
+
+<!-- knowledge + retrieval -->
+<rect x="20" y="496" width="580" height="180" rx="10" style="fill:#f4f3ef; stroke:#cfcdc6; stroke-width:1"/>
+<text x="36" y="518" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:13px; font-weight:650">knowledge/</text>
+<rect x="36" y="530" width="176" height="62" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="48" y="549" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">analytes</text>
+<text x="48" y="566" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">~70 analytes: synonyms,</text>
+<text x="48" y="581" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">ranges, identities</text>
+<rect x="222" y="530" width="176" height="62" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="234" y="549" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">reference</text>
+<text x="234" y="566" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">ranges: lab blank → guideline</text>
+<text x="234" y="581" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">→ NHANES → catalog</text>
+<rect x="408" y="530" width="176" height="62" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="420" y="549" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">lexicon</text>
+<text x="420" y="566" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">synonyms, ontology</text>
+<text x="420" y="581" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">(ATC), panels</text>
+<rect x="36" y="602" width="176" height="62" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="48" y="621" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">entities</text>
+<text x="48" y="638" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">drugs: INN, dose,</text>
+<text x="48" y="653" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">phase; studies</text>
+<rect x="222" y="602" width="176" height="62" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="234" y="621" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">dynamics</text>
+<text x="234" y="638" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">RCV: real change</text>
+<text x="234" y="653" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">or measurement noise</text>
+<rect x="408" y="602" width="176" height="62" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="420" y="621" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">critical</text>
+<text x="420" y="638" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">critical / significant:</text>
+<text x="420" y="653" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">what must not be missed</text>
+
+<rect x="616" y="496" width="204" height="180" rx="10" style="fill:#f4f3ef; stroke:#cfcdc6; stroke-width:1"/>
+<text x="632" y="518" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:13px; font-weight:650">retrieval/</text>
+<rect x="632" y="530" width="172" height="134" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="644" y="550" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">HybridIndex</text>
+<text x="644" y="570" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">BM25 + e5 (dense)</text>
+<text x="644" y="586" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">RRF fusion</text>
+<text x="644" y="602" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">ontology expansion</text>
+<text x="644" y="618" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">document context</text>
+
+<!-- knowledge → sources -->
+<line x1="420" y1="678" x2="420" y2="706" marker-end="url(#m)" style="stroke:#6b6a65; stroke-width:1.4; fill:none"/>
+
+<!-- sources -->
+<rect x="20" y="708" width="800" height="112" rx="10" style="fill:#f4f3ef; stroke:#cfcdc6; stroke-width:1"/>
+<text x="36" y="730" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:13px; font-weight:650">sources/ — one Patient / Record model for both sources</text>
+<rect x="36" y="742" width="376" height="64" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="50" y="764" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">checkup_xlsx — clinic check-up (table)</text>
+<text x="50" y="784" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">export row = protocol field</text>
+<text x="50" y="798" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">P003:r351</text>
+<rect x="428" y="742" width="376" height="64" rx="7" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1"/>
+<text x="442" y="764" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">inpatient_pdf — inpatient record (PDF)</text>
+<text x="442" y="784" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">pages → blocks and lab rows · PII masking</text>
+<text x="442" y="798" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">K04:p71:b3 · K04:p12:l3</text>
+
+<!-- data store -->
+<line x1="420" y1="846" x2="420" y2="822" marker-end="url(#m)" style="stroke:#6b6a65; stroke-width:1.4; fill:none"/>
+<rect x="20" y="848" width="800" height="50" rx="8" style="fill:#ffffff; stroke:#cfcdc6; stroke-width:1; stroke-dasharray:4 3"/>
+<text x="36" y="868" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">Data — local, not in git</text>
+<text x="36" y="886" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">data/raw/*.xlsx · data/pdf_raw/*.pdf · data/nhanes_ri.json · data/assumed_ages.json · models/</text>
+
+<!-- eval column -->
+<rect x="850" y="84" width="250" height="814" rx="10" style="fill:#f6efe4; stroke:#dcc39c; stroke-width:1"/>
+<text x="866" y="106" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#8a5a12; font-size:13px; font-weight:650">eval/ — evaluation</text>
+
+<rect x="866" y="118" width="218" height="66" rx="7" style="fill:#ffffff; stroke:#dcc39c; stroke-width:1"/>
+<text x="878" y="138" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">gold + benchmark</text>
+<text x="878" y="156" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">questions and gold</text>
+<text x="878" y="173" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">→ data/questions.jsonl</text>
+<line x1="975" y1="186" x2="975" y2="206" marker-end="url(#me)" style="stroke:#8a5a12; stroke-width:1.4; fill:none; stroke-dasharray:5 3"/>
+
+<rect x="866" y="208" width="218" height="66" rx="7" style="fill:#ffffff; stroke:#dcc39c; stroke-width:1"/>
+<text x="878" y="228" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">run</text>
+<text x="878" y="246" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">models × systems × repeats</text>
+<text x="878" y="263" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">run_episode → runs/*.jsonl</text>
+<line x1="864" y1="241" x2="822" y2="241" marker-end="url(#me)" style="stroke:#8a5a12; stroke-width:1.4; fill:none; stroke-dasharray:5 3"/>
+<line x1="975" y1="276" x2="975" y2="296" marker-end="url(#me)" style="stroke:#8a5a12; stroke-width:1.4; fill:none; stroke-dasharray:5 3"/>
+
+<rect x="866" y="298" width="218" height="66" rx="7" style="fill:#ffffff; stroke:#dcc39c; stroke-width:1"/>
+<text x="878" y="318" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">score</text>
+<text x="878" y="336" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">correctness by gold type,</text>
+<text x="878" y="352" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">citations, invented numbers</text>
+<line x1="975" y1="366" x2="975" y2="386" marker-end="url(#me)" style="stroke:#8a5a12; stroke-width:1.4; fill:none; stroke-dasharray:5 3"/>
+
+<rect x="866" y="388" width="218" height="66" rx="7" style="fill:#ffffff; stroke:#dcc39c; stroke-width:1"/>
+<text x="878" y="408" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">analyze · behavior</text>
+<text x="878" y="426" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">CIs, failure locus, cost</text>
+<text x="878" y="443" style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; fill:#1d1d1b; font-size:11px">→ runs/*.md, runs/figs/</text>
+
+<rect x="866" y="536" width="218" height="66" rx="7" style="fill:#ffffff; stroke:#dcc39c; stroke-width:1"/>
+<text x="878" y="556" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">retrieval_bench</text>
+<text x="878" y="574" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">search without an LLM:</text>
+<text x="878" y="590" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">Row@k, Ctx@k, Doc@k</text>
+<line x1="864" y1="569" x2="806" y2="569" marker-end="url(#me)" style="stroke:#8a5a12; stroke-width:1.4; fill:none; stroke-dasharray:5 3"/>
+
+<rect x="866" y="744" width="218" height="66" rx="7" style="fill:#ffffff; stroke:#dcc39c; stroke-width:1"/>
+<text x="878" y="764" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#1d1d1b; font-size:12.5px; font-weight:600">pii_audit</text>
+<text x="878" y="782" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">PII residues in PDFs</text>
+<text x="878" y="798" style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; fill:#6b6a65; font-size:11.5px">(counts only)</text>
+<line x1="864" y1="774" x2="806" y2="774" marker-end="url(#me)" style="stroke:#8a5a12; stroke-width:1.4; fill:none; stroke-dasharray:5 3"/>
+</svg>

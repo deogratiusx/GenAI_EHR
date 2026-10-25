@@ -1,0 +1,9 @@
+# The demo image takes only the package, the app and demo_data/ (see Dockerfile.demo).
+.venv
+data
+runs
+models
+archive
+tests
+docs
+**/__pycache__

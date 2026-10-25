@@ -1,0 +1,24 @@
+<section id="practicality" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Practicality</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">Tools cut the prompt five- to tenfold</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Onest', Arial, sans-serif;font-size:80px;font-weight:700;color:#791cbe">3–13k</p>
+<p style="font-size:28px;line-height:1.4;color:#4a4560">prompt tokens per answer with tools, versus 33–78k for the whole check-up in context</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Onest', Arial, sans-serif;font-size:80px;font-weight:700;color:#791cbe">~13 s</p>
+<p style="font-size:28px;line-height:1.4;color:#4a4560">median answer of Qwen3.5-4B with tools on a MacBook (MLX, 4-bit), versus 74–108 s with the whole record</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'Onest', Arial, sans-serif;font-size:80px;font-weight:700;color:#791cbe">2–5 s</p>
+<p style="font-size:28px;line-height:1.4;color:#4a4560">median answer of GigaChat Lite and Max with tools; the data stay in Russia</p>
+</div>
+</div>
+<div style="background:#f3eeff;border:2px dashed #791cbe;border-radius:20px;padding:32px 40px">
+<p style="font-size:28px;line-height:1.45;color:#0f0d22">[[RESULT: final-run latency and tokens per system; map-reduce cost on inpatient PDFs (5–9 chunks per record)]]</p>
+</div>
+<aside>Exploratory medians. A 4B model on CPU only would need minutes per answer: prompt processing, not generation, is the bottleneck. A GPU or Apple Silicon is required for the local option.</aside>
+</section>

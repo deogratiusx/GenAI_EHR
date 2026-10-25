@@ -1,0 +1,29 @@
+<section id="tools" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Tools and knowledge</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">12 tools on top of open knowledge sources</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<table style="font-size:26px;color:#1f1b3a">
+<tr><th style="width:44%">Tool</th><th style="width:56%">Returns</th></tr>
+<tr><td>get_lab</td><td>value, range, flag, range source</td></tr>
+<tr><td>list_abnormal_labs</td><td>out-of-range values by panel</td></tr>
+<tr><td>get_trend</td><td>series, peak, change vs RCV</td></tr>
+<tr><td>search_notes</td><td>hybrid search with document context</td></tr>
+<tr><td>get_conclusions · get_diagnoses</td><td>conclusions, ICD-10 codes</td></tr>
+<tr><td>get_medications · get_studies</td><td>drugs by INN and phase, studies</td></tr>
+<tr><td>check_consistency</td><td>conflicts, shifted exports</td></tr>
+<tr><td>build_dossier</td><td>whole-record dossier for summaries</td></tr>
+</table>
+<table style="font-size:26px;color:#1f1b3a">
+<tr><th style="width:40%">Knowledge</th><th style="width:60%">Source</th></tr>
+<tr><td>Ranges by sex and age</td><td>NHANES 2017–2018, IFCC/CLSI direct method, LAVE</td></tr>
+<tr><td>Decision limits</td><td>clinical guidelines (lipids, glucose, HbA1c)</td></tr>
+<tr><td>Meaningful change</td><td>RCV from EFLM Biological Variation Database</td></tr>
+<tr><td>Drug classes</td><td>ATC hierarchy, INN and trade names</td></tr>
+<tr><td>Search</td><td>BM25 + multilingual-e5 + RRF, ontology</td></tr>
+<tr><td>Criticality</td><td>critical-value lists, text rules</td></tr>
+</table>
+</div>
+<aside>Layered reference policy: the lab’s own blank, then a guideline decision limit, then an NHANES population range by sex and age, then an indicative catalog. Every answer reports which layer judged the value: the point is traceability of the source, not clinical truth.</aside>
+</section>

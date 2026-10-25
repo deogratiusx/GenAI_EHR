@@ -1,0 +1,33 @@
+<section id="summaries" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Whole-record summary and dynamics</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">Recall is the code’s job, the verdict is the model’s</h2>
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<div style="flex:1;background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:32px;font-weight:600;color:#0f0d22">1 · Dossier</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a4560">Code enumerates every abnormal or changing lab with its trend, studies, diagnoses, drugs by phase, conflicts; ranks them critical / significant</p>
+</div>
+<x-shape kind="arrow-right" style="width:56px;height:28px;background:#791cbe"></x-shape>
+<div style="flex:1;background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:32px;font-weight:600;color:#0f0d22">2 · Report schema</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a4560">The model writes one field per section: fact — value — verdict — trend — [id]; rendered into one document</p>
+</div>
+<x-shape kind="arrow-right" style="width:56px;height:28px;background:#791cbe"></x-shape>
+<div style="flex:1;background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:32px;font-weight:600;color:#0f0d22">3 · Checks</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a4560">Every must-mention item covered or explicitly dismissed; no “normal” for a flagged value; trend direction matches the series</p>
+</div>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:1;background:#f3eeff;border:2px dashed #791cbe;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;color:#791cbe">Smoke run, GigaChat Lite, 6 hand-written checklists</p>
+<p style="font-size:30px;line-height:1.4;color:#0f0d22">Checklist: tools 0.03 → report 0.80 · critical recall 0.00 → 0.97 · without checks 0.63 / 0.80</p>
+</div>
+<div style="flex:1;background:#f3eeff;border:2px dashed #791cbe;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:26px;color:#791cbe">Final run, all models</p>
+<p style="font-size:30px;line-height:1.4;color:#0f0d22">[[RESULT: report vs tools, checklist and critical recall per model]]</p>
+</div>
+</div>
+<aside>Dynamics use the reference change value from biological variation: a change below RCV is measurement noise. Trends exist only in inpatient records, where labs repeat 3–5 times; each check-up is a single day.</aside>
+</section>

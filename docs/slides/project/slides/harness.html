@@ -1,0 +1,28 @@
+<section id="harness" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">The harness</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">Deterministic checks around a probabilistic model</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:36px;font-weight:600;color:#0f0d22">During the episode</h3>
+<ul style="font-size:28px;line-height:1.5;color:#4a4560">
+<li>Arguments validated against the schema; errors are repairable messages</li>
+<li>Call budget, cache for repeated calls, explicit “empty” results</li>
+<li>Routing by intent: weak models see only relevant tools</li>
+<li>Text answer → forced final_answer: reasoning and format decoupled</li>
+</ul>
+</div>
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:36px;font-weight:600;color:#0f0d22">Before an answer is accepted</h3>
+<ul style="font-size:28px;line-height:1.5;color:#4a4560">
+<li>Cited row ids must exist</li>
+<li>Numbers must occur in the record or tool outputs</li>
+<li>“Not found” triggers one broad search first</li>
+<li>Reports: every critical item covered, verdicts agree with the data</li>
+</ul>
+</div>
+</div>
+<p style="font-size:26px;color:#6b6680">Each check fires at most once per episode. Format constraints hurt reasoning (Tam et al. 2024), so the model answers freely first and is formatted second.</p>
+<aside>The harness is model-agnostic and deterministic. Its effect is measured as an ablation: tools with and without the harness.</aside>
+</section>

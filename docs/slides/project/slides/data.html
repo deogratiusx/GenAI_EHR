@@ -1,0 +1,20 @@
+<section id="data" data-section="What was built: data, architecture, tools, harness, benchmark, iterations and problems" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Data</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">Two real sources with real defects</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:36px;font-weight:600;color:#0f0d22">Check-ups, partner clinic</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4560">6 anonymized EHR exports (xlsx), 650–750 rows, 15–28 protocols: labs, ultrasound, echo, endoscopy, 8–12 specialists.</p>
+<p style="font-size:28px;line-height:1.4;color:#4a4560">No lab reference ranges; weight 75 vs 95 kg across documents; P005’s export is shifted by one row (Hb “33.3 g/L”).</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:20px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:36px;font-weight:600;color:#0f0d22">Inpatient records, another clinic</h3>
+<p style="font-size:28px;line-height:1.4;color:#4a4560">6 cardiology admissions, 90–139-page PDFs (form 003/u) stitched from many doctors’ documents.</p>
+<p style="font-size:28px;line-height:1.4;color:#4a4560">Free text, lab tables with their own ranges, personal data — masked on load; audit: zero residues.</p>
+</div>
+</div>
+<p style="font-size:28px;color:#4a4560">Defects were kept on purpose: tools and models must cope with them and recognize corrupted data.</p>
+<aside>Both sources map onto one record model with stable ids: P003:r351 for a check-up row, K04:p71:b3 for a PDF block. Answers cite these ids.</aside>
+</section>

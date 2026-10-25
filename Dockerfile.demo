@@ -1,0 +1,19 @@
+# Hosted demo: GigaChat through the API, anonymized check-ups only, BM25 search (no local encoder or LLM).
+# Built by docker-compose.ehr-demo.yml in the repository root; served at /ehr-demo behind oauth2-proxy.
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
+    EHR_DEMO_PUBLIC=1 EHR_DENSE=0 EHR_REF_POLICY=layered
+
+WORKDIR /app
+RUN pip install --no-cache-dir "openpyxl==3.1.5" "pandas==2.2.3" "numpy==2.1.3" "streamlit==1.40.2" "altair==5.5.0"
+
+COPY ehr_agent ./ehr_agent
+COPY app.py ./
+COPY .streamlit ./.streamlit
+COPY demo_data/data ./data
+COPY demo_data/runs ./runs
+
+EXPOSE 8501
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0", "--server.baseUrlPath=ehr-demo", \
+     "--server.headless=true", "--browser.gatherUsageStats=false", "--server.enableXsrfProtection=true"]

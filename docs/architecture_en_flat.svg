@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 916" width="1120" height="916" role="img" aria-labelledby="t d">
+<title id="t">EHR agent architecture</title>
+<desc id="d">Layers: agent (harness, loop, model backends), tools, knowledge and search, data sources; evaluation on the right.</desc>
+<style>
+  
+    .bg { fill: #fcfcfb; }
+  text { font-family: -apple-system, "Segoe UI", system-ui, sans-serif; fill: #1d1d1b; }
+  .layer { fill: #f4f3ef; stroke: #cfcdc6; stroke-width: 1; }
+  .layer.acc { fill: #eaf2fc; stroke: #9cc0ec; }
+  .layer.eval { fill: #f6efe4; stroke: #dcc39c; }
+  .box { fill: #ffffff; stroke: #cfcdc6; stroke-width: 1; }
+  .box.acc { stroke: #9cc0ec; }
+  .box.eval { stroke: #dcc39c; }
+  .box.dash { stroke-dasharray: 4 3; }
+  .pill { fill: #ffffff; stroke: #1d1d1b; stroke-width: 1.2; }
+  .lt { font-size: 13px; font-weight: 650; }
+  .lt.acc { fill: #2a78d6; } .lt.eval { fill: #8a5a12; }
+  .bt { font-size: 12.5px; font-weight: 600; }
+  .tx { font-size: 11.5px; fill: #6b6a65; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; fill: #1d1d1b; }
+  .lbl { font-size: 11px; fill: #6b6a65; }
+  .ar { stroke: #6b6a65; stroke-width: 1.4; fill: none; }
+  .ar.acc { stroke: #2a78d6; }
+  .ar.eval { stroke: #8a5a12; stroke-dasharray: 5 3; }
+  .head { fill: #6b6a65; } .head.acc { fill: #2a78d6; } .head.eval { fill: #8a5a12; }
+</style>
+<defs>
+  <marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head acc" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="me" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head eval" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="bg" x="0" y="0" width="1120" height="916"/>
+
+<!-- input / output -->
+<rect class="pill" x="90" y="14" width="260" height="38" rx="19"/>
+<text class="bt" x="220" y="38" text-anchor="middle">Doctor’s question</text>
+<rect class="pill" x="500" y="14" width="320" height="38" rx="19"/>
+<text class="bt" x="660" y="38" text-anchor="middle">Answer: text + row ids + status</text>
+<line class="ar acc" x1="220" y1="52" x2="220" y2="82" marker-end="url(#ma)"/>
+<line class="ar acc" x1="660" y1="84" x2="660" y2="54" marker-end="url(#ma)"/>
+
+<!-- agent layer -->
+<rect class="layer acc" x="20" y="84" width="800" height="190" rx="10"/>
+<text class="lt acc" x="36" y="106">agent/</text>
+
+<rect class="box acc" x="36" y="118" width="250" height="140" rx="7"/>
+<text class="bt" x="50" y="140">harness</text>
+<text class="tx" x="50" y="162">routing by intent</text>
+<text class="tx" x="50" y="180">answer checks: row ids,</text>
+<text class="tx" x="50" y="196">numbers, “not found”</text>
+<text class="tx" x="50" y="214">answer format repair</text>
+<text class="tx" x="50" y="232">report completeness, verdicts</text>
+
+<rect class="box acc" x="316" y="118" width="208" height="140" rx="7"/>
+<text class="bt" x="330" y="140">loop — episode</text>
+<text class="tx" x="330" y="162">model → call → result</text>
+<text class="tx" x="330" y="180">budget: 4 calls</text>
+<text class="tx" x="330" y="198">cache for repeated calls</text>
+<text class="tx" x="330" y="216">systems.py:</text>
+<text class="tx" x="330" y="232">11 configurations</text>
+
+<rect class="box acc" x="554" y="118" width="250" height="140" rx="7"/>
+<text class="bt" x="568" y="140">llm — model backends</text>
+<text class="tx" x="568" y="162">GigaChat-2 Lite / Max</text>
+<text class="tx" x="568" y="178">API, data in Russia</text>
+<text class="tx" x="568" y="202">Qwen3.5-4B, Med-Qwen-4B</text>
+<text class="tx" x="568" y="218">MLX, 4-bit, local</text>
+<text class="tx" x="568" y="242">prompt limit → context_overflow</text>
+
+<line class="ar acc" x1="288" y1="188" x2="314" y2="188" marker-start="url(#ma)" marker-end="url(#ma)"/>
+<line class="ar acc" x1="526" y1="188" x2="552" y2="188" marker-start="url(#ma)" marker-end="url(#ma)"/>
+
+<!-- agent ↔ tools -->
+<line class="ar acc" x1="390" y1="276" x2="390" y2="312" marker-end="url(#ma)"/>
+<line class="ar acc" x1="450" y1="312" x2="450" y2="276" marker-end="url(#ma)"/>
+<text class="lbl" x="380" y="298" text-anchor="end">call with JSON arguments</text>
+<text class="lbl" x="460" y="298">result within budget, with row ids and next_offset</text>
+
+<!-- tools layer -->
+<rect class="layer acc" x="20" y="314" width="800" height="150" rx="10"/>
+<text class="lt acc" x="36" y="336">tools/ — 12 tools + final_answer</text>
+
+<rect class="box acc" x="36" y="348" width="144" height="104" rx="7"/>
+<text class="bt" x="48" y="368">text</text>
+<text class="mono" x="48" y="386">get_overview</text>
+<text class="mono" x="48" y="400">search_notes</text>
+<text class="mono" x="48" y="414">get_conclusions</text>
+<text class="mono" x="48" y="428">get_diagnoses</text>
+<text class="mono" x="48" y="442">get_document</text>
+
+<rect class="box acc" x="192" y="348" width="144" height="104" rx="7"/>
+<text class="bt" x="204" y="368">labs</text>
+<text class="mono" x="204" y="386">get_lab</text>
+<text class="mono" x="204" y="400">list_abnormal_labs</text>
+<text class="mono" x="204" y="414">get_trend</text>
+<text class="mono" x="204" y="428">calculate</text>
+
+<rect class="box acc" x="348" y="348" width="144" height="104" rx="7"/>
+<text class="bt" x="360" y="368">quality</text>
+<text class="mono" x="360" y="386">check_consistency</text>
+<text class="tx" x="360" y="404">+ quality marks</text>
+<text class="tx" x="360" y="418">on lab values</text>
+
+<rect class="box acc" x="504" y="348" width="144" height="104" rx="7"/>
+<text class="bt" x="516" y="368">clinical · summary</text>
+<text class="mono" x="516" y="386">get_medications</text>
+<text class="mono" x="516" y="400">get_studies</text>
+<text class="mono" x="516" y="420">build_dossier</text>
+<text class="tx" x="516" y="436">+ report schema</text>
+
+<rect class="box dash" x="660" y="348" width="144" height="104" rx="7"/>
+<text class="bt" x="672" y="368">baselines</text>
+<text class="mono" x="672" y="386">run_python</text>
+<text class="tx" x="672" y="404">whole record as text</text>
+<text class="tx" x="672" y="418">in the prompt</text>
+<text class="tx" x="672" y="440">or in chunks</text>
+
+<!-- tools → knowledge -->
+<line class="ar" x1="420" y1="466" x2="420" y2="494" marker-end="url(#m)"/>
+
+<!-- knowledge + retrieval -->
+<rect class="layer" x="20" y="496" width="580" height="180" rx="10"/>
+<text class="lt" x="36" y="518">knowledge/</text>
+<rect class="box" x="36" y="530" width="176" height="62" rx="7"/>
+<text class="bt" x="48" y="549">analytes</text>
+<text class="tx" x="48" y="566">~70 analytes: synonyms,</text>
+<text class="tx" x="48" y="581">ranges, identities</text>
+<rect class="box" x="222" y="530" width="176" height="62" rx="7"/>
+<text class="bt" x="234" y="549">reference</text>
+<text class="tx" x="234" y="566">ranges: lab blank → guideline</text>
+<text class="tx" x="234" y="581">→ NHANES → catalog</text>
+<rect class="box" x="408" y="530" width="176" height="62" rx="7"/>
+<text class="bt" x="420" y="549">lexicon</text>
+<text class="tx" x="420" y="566">synonyms, ontology</text>
+<text class="tx" x="420" y="581">(ATC), panels</text>
+<rect class="box" x="36" y="602" width="176" height="62" rx="7"/>
+<text class="bt" x="48" y="621">entities</text>
+<text class="tx" x="48" y="638">drugs: INN, dose,</text>
+<text class="tx" x="48" y="653">phase; studies</text>
+<rect class="box" x="222" y="602" width="176" height="62" rx="7"/>
+<text class="bt" x="234" y="621">dynamics</text>
+<text class="tx" x="234" y="638">RCV: real change</text>
+<text class="tx" x="234" y="653">or measurement noise</text>
+<rect class="box" x="408" y="602" width="176" height="62" rx="7"/>
+<text class="bt" x="420" y="621">critical</text>
+<text class="tx" x="420" y="638">critical / significant:</text>
+<text class="tx" x="420" y="653">what must not be missed</text>
+
+<rect class="layer" x="616" y="496" width="204" height="180" rx="10"/>
+<text class="lt" x="632" y="518">retrieval/</text>
+<rect class="box" x="632" y="530" width="172" height="134" rx="7"/>
+<text class="bt" x="644" y="550">HybridIndex</text>
+<text class="tx" x="644" y="570">BM25 + e5 (dense)</text>
+<text class="tx" x="644" y="586">RRF fusion</text>
+<text class="tx" x="644" y="602">ontology expansion</text>
+<text class="tx" x="644" y="618">document context</text>
+
+<!-- knowledge → sources -->
+<line class="ar" x1="420" y1="678" x2="420" y2="706" marker-end="url(#m)"/>
+
+<!-- sources -->
+<rect class="layer" x="20" y="708" width="800" height="112" rx="10"/>
+<text class="lt" x="36" y="730">sources/ — one Patient / Record model for both sources</text>
+<rect class="box" x="36" y="742" width="376" height="64" rx="7"/>
+<text class="bt" x="50" y="764">checkup_xlsx — clinic check-up (table)</text>
+<text class="tx" x="50" y="784">export row = protocol field</text>
+<text class="mono" x="50" y="798">P003:r351</text>
+<rect class="box" x="428" y="742" width="376" height="64" rx="7"/>
+<text class="bt" x="442" y="764">inpatient_pdf — inpatient record (PDF)</text>
+<text class="tx" x="442" y="784">pages → blocks and lab rows · PII masking</text>
+<text class="mono" x="442" y="798">K04:p71:b3 · K04:p12:l3</text>
+
+<!-- data store -->
+<line class="ar" x1="420" y1="846" x2="420" y2="822" marker-end="url(#m)"/>
+<rect class="box dash" x="20" y="848" width="800" height="50" rx="8"/>
+<text class="bt" x="36" y="868">Data — local, not in git</text>
+<text class="mono" x="36" y="886">data/raw/*.xlsx · data/pdf_raw/*.pdf · data/nhanes_ri.json · data/assumed_ages.json · models/</text>
+
+<!-- eval column -->
+<rect class="layer eval" x="850" y="84" width="250" height="814" rx="10"/>
+<text class="lt eval" x="866" y="106">eval/ — evaluation</text>
+
+<rect class="box eval" x="866" y="118" width="218" height="66" rx="7"/>
+<text class="bt" x="878" y="138">gold + benchmark</text>
+<text class="tx" x="878" y="156">questions and gold</text>
+<text class="mono" x="878" y="173">→ data/questions.jsonl</text>
+<line class="ar eval" x1="975" y1="186" x2="975" y2="206" marker-end="url(#me)"/>
+
+<rect class="box eval" x="866" y="208" width="218" height="66" rx="7"/>
+<text class="bt" x="878" y="228">run</text>
+<text class="tx" x="878" y="246">models × systems × repeats</text>
+<text class="mono" x="878" y="263">run_episode → runs/*.jsonl</text>
+<line class="ar eval" x1="864" y1="241" x2="822" y2="241" marker-end="url(#me)"/>
+<line class="ar eval" x1="975" y1="276" x2="975" y2="296" marker-end="url(#me)"/>
+
+<rect class="box eval" x="866" y="298" width="218" height="66" rx="7"/>
+<text class="bt" x="878" y="318">score</text>
+<text class="tx" x="878" y="336">correctness by gold type,</text>
+<text class="tx" x="878" y="352">citations, invented numbers</text>
+<line class="ar eval" x1="975" y1="366" x2="975" y2="386" marker-end="url(#me)"/>
+
+<rect class="box eval" x="866" y="388" width="218" height="66" rx="7"/>
+<text class="bt" x="878" y="408">analyze · behavior</text>
+<text class="tx" x="878" y="426">CIs, failure locus, cost</text>
+<text class="mono" x="878" y="443">→ runs/*.md, runs/figs/</text>
+
+<rect class="box eval" x="866" y="536" width="218" height="66" rx="7"/>
+<text class="bt" x="878" y="556">retrieval_bench</text>
+<text class="tx" x="878" y="574">search without an LLM:</text>
+<text class="tx" x="878" y="590">Row@k, Ctx@k, Doc@k</text>
+<line class="ar eval" x1="864" y1="569" x2="806" y2="569" marker-end="url(#me)"/>
+
+<rect class="box eval" x="866" y="744" width="218" height="66" rx="7"/>
+<text class="bt" x="878" y="764">pii_audit</text>
+<text class="tx" x="878" y="782">PII residues in PDFs</text>
+<text class="tx" x="878" y="798">(counts only)</text>
+<line class="ar eval" x1="864" y1="774" x2="806" y2="774" marker-end="url(#me)"/>
+</svg>

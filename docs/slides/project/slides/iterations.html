@@ -1,0 +1,17 @@
+<section id="iterations" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Iterations driven by error analysis</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">Each fix targeted a measured failure mode</h2>
+</div>
+<table style="font-size:26px;color:#1f1b3a">
+<tr><th style="width:30%">Intervention</th><th style="width:34%">Failure it addressed</th><th style="width:22%">Metric</th><th style="width:14%">Before → after</th></tr>
+<tr><td>Hybrid search + document context</td><td>gold row never retrieved</td><td>Ctx@6, tables</td><td>0.60 → 1.00</td></tr>
+<tr><td>Ontology (ATC, lay terms)</td><td>“antithrombotics”, “fats in blood”</td><td>Ctx@6, PDF</td><td>0.36 → 0.73</td></tr>
+<tr><td>Source-neutral prompt</td><td>id format leaked across sources</td><td>valid citations, Lite, PDF</td><td>0.30 → 1.00</td></tr>
+<tr><td>Typed entities: drugs, studies</td><td>dose and phase lost in free text</td><td>probe v4, Qwen / Med-Qwen</td><td>+0.14 / +0.17</td></tr>
+<tr><td>Robust harness (T5.1)</td><td>weak model writes answers as text</td><td>accuracy, Lite, PDF</td><td>0.54 → 0.74</td></tr>
+<tr><td>Dossier + report checks</td><td>summaries omit whole sections</td><td>critical recall, Lite</td><td>0.00 → 0.97</td></tr>
+</table>
+<p style="font-size:24px;color:#6b6680">Exploratory sparse runs, 9–22 questions per cell: confidence intervals about ±0.15. Final-run numbers follow.</p>
+<aside>Qwen3.5-4B went from 0.68 to 0.93 on inpatient PDFs across iterations. The summary line is from a smoke run on 6 records and was tuned on those questions, so it is an in-sample estimate.</aside>
+</section>

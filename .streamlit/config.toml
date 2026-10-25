@@ -1,0 +1,11 @@
+# AI-mnesis look (colours of ai-mnesis.ru)
+[theme]
+base = "light"
+primaryColor = "#791cbe"
+backgroundColor = "#fbfaff"
+secondaryBackgroundColor = "#f1ecfb"
+textColor = "#1f1b3a"
+font = "sans serif"
+
+[server]
+headless = true
