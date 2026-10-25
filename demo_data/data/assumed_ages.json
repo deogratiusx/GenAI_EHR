@@ -1,0 +1,24 @@
+{
+  "_note": "Ages were removed by anonymization. These are estimates from clues in the records (point value + plausible range); the real pipeline will read the age from the MIS.",
+  "P001": {"age": 52, "range": [45, 60], "evidence": [
+    "P001:r185 presbyopia (H52.4) — usually after 45",
+    "P001:r354 'много лет' diverticular disease; cholecystectomy 2020",
+    "P001:r397 check-up programme 'после 40 лет'"],
+    "data_issue": "Feminine verb forms and a women's programme name (P001:r397, 'Госпитализирована') conflict with prostate ultrasound and PSA in the same record."},
+  "P002": {"age": 45, "range": [38, 55], "evidence": [
+    "working endoscopic surgeon, hypertension (I10) 'в течение нескольких лет' (P002:r512)",
+    "screening colonoscopy with control in 1–2 years (P002:r606)"]},
+  "P003": {"age": 43, "range": [38, 47], "evidence": [
+    "births 2006 and 2010, still menstruating (P003:r284)",
+    "smoking > 10 years; pulmonologist writes 'учитывая молодой возраст' (P003:r680)",
+    "nose trauma 'примерно в 20 лет' (P003:r81)"]},
+  "P004": {"age": 45, "range": [35, 55], "evidence": [
+    "benign prostatic enlargement with transition-zone hyperplasia (P004:r278)",
+    "hypertension (I10), NAFLD F2, routine check-up (Z10)"]},
+  "P005": {"age": 39, "range": [33, 45], "evidence": [
+    "births 2013 and 2018, regular menses (P005:r206)",
+    "acoustic neuroma surgery 2014 (P005:r41)"]},
+  "P006": {"age": 45, "range": [35, 55], "evidence": [
+    "myopia 'после 20 лет', contact lenses (P006:r80)",
+    "mixed hyperlipidaemia (E78.2), chronic obstructive bronchitis on CT, father with diabetes 'в пожилом возрасте'"]}
+}

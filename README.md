@@ -1,10 +1,10 @@
 # Инструменты LLM-агента для аналитики медицинских карт
 
-> **Public mirror of the course project.** Patient data are not included: the anonymized check-up exports
-> (provided by a partner clinic under agreement) and the inpatient PDF records stay private, as do model weights
-> and run logs with record excerpts. The code, tests (synthetic data), report, slides sources and the analysis
-> plan are complete. Aggregated results: [REPORT.md](REPORT.md) §8–10. The hosted demo
-> (`Dockerfile.demo`, `scripts/build_demo_data.py`) runs inside AI-mnesis behind Keycloak.
+> **Public mirror of the course project.** Included: the code, tests (synthetic data), report, slide sources,
+> analysis plan and `demo_data/` — the six anonymized check-up exports (P001–P006, tables) with their test
+> questions and final-run episodes, enough to run the demo (`EHR_DEMO_PUBLIC=1 streamlit run app.py` after copying
+> `demo_data/data` to `data/` and `demo_data/runs` to `runs/`, or `Dockerfile.demo`). Not included: the inpatient
+> PDF records (personal data), model weights and the full run logs.
 
 
 Курсовой проект по дисциплине «Современные методы и алгоритмы генеративного ИИ».
