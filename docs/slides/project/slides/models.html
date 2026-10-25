@@ -1,0 +1,18 @@
+<section id="models" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Models under test</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:56px;font-weight:700;color:#0f0d22;line-height:1.15">Four models chosen as controlled contrasts, one tool-calling contract</h2>
+</div>
+<table style="font-size:24px;color:#1f1b3a">
+<tr><th style="width:17%">Model</th><th style="width:20%">Where it runs</th><th style="width:33%">How it calls tools</th><th style="width:30%">Why it is in the study</th></tr>
+<tr><td><b>GigaChat-2 Max</b></td><td>Sber cloud API, data in Russia, 128k context</td><td>native function calling: functions list (JSON Schema), function_call auto or forced; returns name + JSON arguments</td><td>strongest model allowed under 152-FZ; the demo model</td></tr>
+<tr><td><b>GigaChat-2 Lite</b></td><td>same API, cheaper tier</td><td>same contract</td><td>weak cloud model: does design compensate for size?</td></tr>
+<tr><td><b>Qwen3.5-4B</b> (4-bit)</td><td>locally, Apple Silicon, MLX</td><td>chat template with tools; the model writes a &lt;tool_call&gt; block (XML or JSON), parsed by our backend</td><td>open weights, on-premise option for a clinic</td></tr>
+<tr><td><b>Med-Qwen-3.5-4B</b> (4-bit)</td><td>locally, MLX</td><td>same template; answers after a &lt;think&gt; block</td><td>same base with medical fine-tuning: does domain knowledge help?</td></tr>
+</table>
+<div style="display:flex;gap:24px">
+<p style="flex:1;font-size:24px;line-height:1.45;color:#4a4560;background:#f3eeff;border-radius:16px;padding:24px 28px">One backend interface for all: chat(messages, tools, force_final) → text or {name, arguments}. Temperature 0. Same prompts, tools and harness for every model.</p>
+<p style="flex:1;font-size:24px;line-height:1.45;color:#4a4560;background:#f3eeff;border-radius:16px;padding:24px 28px">Excluded: foreign frontier APIs (data residency), GigaChat Pro (keep two contrasting tiers), a stronger control model (not available inside the constraints).</p>
+</div>
+<aside>The pairs are deliberate: Lite vs Max isolates model size within one provider; Qwen vs Med-Qwen isolates medical fine-tuning on the same base; Qwen vs Max compares a small local model with a large cloud one. Forcing a final answer on GigaChat needed a workaround: the API accepts a forced call only when final_answer is the sole function in the list.</aside>
+</section>

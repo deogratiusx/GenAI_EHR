@@ -1,24 +1,30 @@
-<section id="benchmark" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:44px">
+<section id="benchmark" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:96px 128px 72px;display:flex;flex-direction:column;gap:24px">
 <div style="display:flex;flex-direction:column;gap:16px">
 <p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Benchmark</p>
-<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">218 questions with gold built from the data</h2>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:56px;font-weight:700;color:#0f0d22;line-height:1.15">218 questions with gold built from the data</h2>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px">
 <div style="display:flex;flex-direction:column;gap:12px">
-<p style="font-family:'Onest', Arial, sans-serif;font-size:72px;font-weight:700;color:#791cbe">10</p>
-<p style="font-size:28px;line-height:1.4;color:#4a4560">categories: lab value, out-of-range panel, not measured (trap), ICD-10, height/weight conflict, free-text fact, cross-document synthesis, corrupted data (trap), dynamics, summary</p>
+<p style="font-family:'Onest', Arial, sans-serif;font-size:56px;font-weight:700;color:#791cbe">10</p>
+<p style="font-size:24px;line-height:1.4;color:#4a4560">categories: lab value, out-of-range panel, not measured (trap), ICD-10, height/weight conflict, free-text fact, cross-document synthesis, corrupted data (trap), dynamics, summary</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:12px">
-<p style="font-family:'Onest', Arial, sans-serif;font-size:72px;font-weight:700;color:#791cbe">3</p>
-<p style="font-size:28px;line-height:1.4;color:#4a4560">phrasing levels of the same intent: exact, clinical shorthand (“LDL-C?”), lay and vague (“how is the bad cholesterol?”)</p>
+<p style="font-family:'Onest', Arial, sans-serif;font-size:56px;font-weight:700;color:#791cbe">3</p>
+<p style="font-size:24px;line-height:1.4;color:#4a4560">phrasing levels of the same intent: exact, clinical shorthand (“LDL-C?”), lay and vague (“how is the bad cholesterol?”)</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:12px">
-<p style="font-family:'Onest', Arial, sans-serif;font-size:72px;font-weight:700;color:#791cbe">4</p>
-<p style="font-size:28px;line-height:1.4;color:#4a4560">metric families: correctness by gold type, citation validity, fabricated numbers, critical recall of summaries</p>
+<p style="font-family:'Onest', Arial, sans-serif;font-size:56px;font-weight:700;color:#791cbe">4</p>
+<p style="font-size:24px;line-height:1.4;color:#4a4560">metric families: correctness by gold type, citation validity, fabricated numbers, critical recall of summaries</p>
 </div>
 </div>
-<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:32px 40px;display:flex;flex-direction:column;gap:8px">
-<p style="font-size:28px;line-height:1.45;color:#4a4560"><b>Final run:</b> stratified sample of 105 questions · layered reference ranges · temperature 0, plus 3 runs at T = 0.5 for variance · probe sets written before each iteration · offline retrieval benchmark without an LLM · scorer audited by hand on a stratified sample</p>
-</div>
+<table style="font-size:22px;color:#1f1b3a">
+<tr><th style="width:15%">Category</th><th style="width:52%">Question (as asked, Russian)</th><th style="width:33%">Gold</th></tr>
+<tr><td>lab value, L1</td><td>Какой уровень показателя «ЛПНП» у пациента?</td><td>number 4.06</td></tr>
+<tr><td>same, L2 · L3</td><td>Сколько у него LDL-C? · Как у пациента с «плохим» холестерином?</td><td>number 4.06</td></tr>
+<tr><td>not measured</td><td>Какой уровень показателя «Липопротеин (a)» у пациента?</td><td>status not_found; any number = hallucination</td></tr>
+<tr><td>corrupted data</td><td>Какой уровень гемоглобина у пациентки? (P005)</td><td>status uncertain; trap: reporting 33.3</td></tr>
+<tr><td>dynamics</td><td>Как менялся тропонин I за госпитализацию: пик, последнее значение?</td><td>peak 9061, last 2312, direction, course</td></tr>
+</table>
+<p style="font-size:24px;color:#4a4560"><b>Final run:</b> stratified sample of 105 questions · layered reference ranges · temperature 0 · pre-registered paired tests · scorer audited by hand (κ = 0.73)</p>
 <aside>Gold is computed from the record where possible: numbers, sets of abnormal analytes, ICD codes, conflicts. Free-text facts are regex checklists. Context overflow counts as not applicable, not as an error.</aside>
 </section>

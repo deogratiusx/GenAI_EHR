@@ -1,0 +1,24 @@
+<section id="usecase" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:96px 128px 72px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Use case · GigaChat Max, real final-run episode</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:52px;font-weight:700;color:#0f0d22;line-height:1.15">“Какой уровень гемоглобина у пациентки?” — on a corrupted export</h2>
+</div>
+<div style="display:flex;gap:32px">
+<div style="flex:3;display:flex;flex-direction:column;gap:12px">
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:14px;padding:16px 22px;display:flex;flex-direction:column;gap:6px"><p style="font-size:22px;font-weight:600;color:#791cbe">1 · get_lab(analyte="гемоглобин")</p><p style="font-family:'Courier New', monospace;font-size:22px;line-height:1.5;color:#0f0d22">P005:r67 · 33.3 g/L · flag L · range 111–150 (NHANES, F 18–39) · НЕДОСТОВЕРНО: leukocyte differential ≠ 100 % in this panel — rows likely shifted</p></div>
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:14px;padding:16px 22px;display:flex;flex-direction:column;gap:6px"><p style="font-size:22px;font-weight:600;color:#791cbe">2 · check_consistency()</p><p style="font-size:22px;line-height:1.45;color:#4a4560">weight 1.86 / 7 / 70 / 73 kg across documents; four broken lab identities → the export is shifted, not the patient anaemic</p></div>
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:14px;padding:16px 22px;display:flex;flex-direction:column;gap:6px"><p style="font-size:22px;font-weight:600;color:#791cbe">3 · text reply → harness: format repair → final_answer</p><p style="font-family:'Courier New', monospace;font-size:22px;line-height:1.5;color:#0f0d22">“Уровень гемоглобина недостоверен из-за возможного сдвига строк при выгрузке.” · status uncertain · [P005:r67]</p></div>
+</div>
+<div style="flex:2;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;color:#0f0d22">Same question, other systems</p>
+<table style="font-size:22px;color:#1f1b3a">
+<tr><th style="width:42%">System</th><th style="width:58%">Answer</th></tr>
+<tr><td>tools (any variant)</td><td>flags the data as unreliable ✓</td></tr>
+<tr><td>code interpreter</td><td>“33.3 g/L” — reports the corrupted value ✗</td></tr>
+<tr><td>whole record</td><td>“102 g/L” — reads a neighbouring row ✗</td></tr>
+</table>
+<p style="font-size:22px;line-height:1.45;color:#4a4560">The deterministic quality check travels with every value, so the model does not have to discover the corruption itself.</p>
+</div>
+</div>
+<aside>Real episode from the final run (GigaChat Max, system tools, question P005-01). The export of this check-up is shifted by one row in the blood count; a correct assistant must refuse to interpret it. Every tool-based system did; both baselines answered with a wrong number.</aside>
+</section>

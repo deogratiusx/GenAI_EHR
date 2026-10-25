@@ -1,0 +1,31 @@
+<section id="toolcall" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:112px 128px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Anatomy of one episode</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:56px;font-weight:700;color:#0f0d22;line-height:1.15">The model chooses and phrases; code retrieves, judges and checks</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:28px;font-weight:600;color:#791cbe">1 · Model → call</h3>
+<p style="font-size:24px;line-height:1.4;color:#4a4560">Question: “Какой уровень ЛПНП?” The model sees 12 tool specs and emits</p>
+<p style="font-family:'Courier New', monospace;font-size:24px;line-height:1.4;color:#0f0d22;background:#f3eeff;border-radius:10px;padding:16px">get_lab(analyte="ЛПНП")</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:28px;font-weight:600;color:#791cbe">2 · Code → result</h3>
+<p style="font-size:24px;line-height:1.4;color:#4a4560">Synonyms resolve “ЛПНП” to LDL; the reference policy picks a layer; output is short JSON with row ids</p>
+<p style="font-family:'Courier New', monospace;font-size:24px;line-height:1.4;color:#0f0d22;background:#f3eeff;border-radius:10px;padding:16px">id P003:r351 · 4.06 · flag H · ≤3.0 (guideline)</p>
+</div>
+<div style="background:#ffffff;border:1px solid #d6d8ff;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-family:'Onest', Arial, sans-serif;font-size:28px;font-weight:600;color:#791cbe">3 · Answer → checks</h3>
+<p style="font-size:24px;line-height:1.4;color:#4a4560">final_answer(answer, citations, status); the harness verifies ids, numbers and “not found” before accepting</p>
+<p style="font-family:'Courier New', monospace;font-size:24px;line-height:1.4;color:#0f0d22;background:#f3eeff;border-radius:10px;padding:16px">“LDL 4.06 mmol/L, above target” [P003:r351]</p>
+</div>
+</div>
+<table style="font-size:24px;color:#1f1b3a">
+<tr><th style="width:26%">Tool design rule</th><th style="width:74%">Why (failure it prevents)</th></tr>
+<tr><td>Typed arguments, JSON Schema</td><td>validated before execution; an error is a repairable message, not a crash</td></tr>
+<tr><td>Output budget, pagination</td><td>3.5–24k characters per call; lists cut with next_offset, never mid-JSON (long-context loss)</td></tr>
+<tr><td>Explicit emptiness</td><td>found=false with what was checked, so “not measured” is not confused with “not retrieved”</td></tr>
+<tr><td>Every fact carries a row id</td><td>answers are verifiable; invented ids and numbers are caught by the harness</td></tr>
+</table>
+<aside>The example is a real episode of the main system on check-up P003. Budget: up to 4 tool calls; when it is spent, the final answer is forced.</aside>
+</section>

@@ -1,15 +1,11 @@
-<section id="results" data-section="Final run results, scientific contrasts, practicality and insights" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:40px">
-<div style="display:flex;flex-direction:column;gap:16px">
+<section id="results" data-section="Final run results, scientific contrasts, practicality and insights" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:96px 128px 72px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:12px">
 <p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Final run · accuracy</p>
-<h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">[[RESULT: one-line headline of the final run]]</h2>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:52px;font-weight:700;color:#0f0d22;line-height:1.15">Tools double code-interpreter accuracy; a local 4B model matches GigaChat Max</h2>
 </div>
-<table style="font-size:28px;color:#1f1b3a">
-<tr><th style="width:22%">Model</th><th style="width:13%">Tools, tables</th><th style="width:13%">Tools, PDF</th><th style="width:13%">Code</th><th style="width:13%">Whole record</th><th style="width:13%">Map-reduce, PDF</th><th style="width:13%">Report, summaries</th></tr>
-<tr><td>GigaChat Max</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td></tr>
-<tr><td>GigaChat Lite</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td></tr>
-<tr><td>Qwen3.5-4B, local</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td><td>[[ ]]</td></tr>
-<tr><td>Med-Qwen-4B, local</td><td>[[ ]]</td><td>[[ ]]</td><td>—</td><td>—</td><td>—</td><td>[[ ]]</td></tr>
-</table>
-<p style="font-size:24px;color:#6b6680">105 questions, layered reference ranges, temperature 0. Whole record on PDFs: not applicable (context overflow). Source: runs/final_stats.md.</p>
-<aside>Placeholder slide: fill from runs/final_stats.md, table “Accuracy by system”. Consider replacing the table with a bar chart once numbers are in.</aside>
+<div style="flex:1;display:flex;justify-content:center;background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:16px">
+<img src="/_blob/d466cf006c07a4450a842725cb31b3de" alt="Grouped bar chart of accuracy by system and model" style="width:1600px;height:600px;object-fit:contain">
+</div>
+<p style="font-size:24px;color:#6b6680">95 point questions, layered reference ranges, temperature 0. Whole record on PDFs did not fit the context in 15 of 31 questions (N/A). Qwen whole record: 19 questions; Lite: test, PDF and dynamics sets.</p>
+<aside>Code-interpreter accuracy is less than half of tool accuracy for every model. The whole record in context is close on check-ups, which fit, but costs far more and often does not fit for inpatient PDFs.</aside>
 </section>

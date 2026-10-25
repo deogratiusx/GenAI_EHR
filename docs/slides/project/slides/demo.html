@@ -1,12 +1,20 @@
-<section id="demo" style="background:#0f0d22;color:#fbfaff;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
-<p style="font-size:24px;font-weight:600;color:#c4b5fd;letter-spacing:2px;text-transform:uppercase">Demo · GigaChat Max</p>
+<section id="demo" style="background:#fbfaff;color:#0f0d22;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:space-between">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Demo · GigaChat Max</p>
 <div style="display:flex;flex-direction:column;gap:32px">
-<h2 style="font-family:'Onest', Arial, sans-serif;font-size:88px;font-weight:700;color:#fbfaff;line-height:1.1">Ask a question,<br>see every tool call</h2>
-<p style="font-size:36px;line-height:1.4;color:#d6d8ff">Question → tool calls with arguments and results → harness checks → answer with cited rows of the record</p>
+<h2 style="font-family:'Onest', Arial, sans-serif;font-size:88px;font-weight:700;color:#0f0d22;line-height:1.1">Ask a question,<br>see every tool call</h2>
+<p style="font-size:36px;line-height:1.4;color:#4a4560">Question → tool calls with arguments and results → harness checks → answer with cited rows of the record</p>
 </div>
-<div style="display:flex;justify-content:space-between;align-items:end">
-<p style="font-size:32px;color:#c4b5fd">ai-mnesis.ru/ehr-demo · Keycloak login</p>
-<p style="font-size:28px;color:#d6d8ff">Code and report: [[REPO URL]]</p>
+<div style="display:flex;gap:32px;align-items:stretch">
+<div style="flex:1;background:#f3eeff;border:2px solid #791cbe;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Open the demo</p>
+<p style="font-size:36px;font-weight:600"><a href="https://ai-mnesis.ru/ehr-demo/">ai-mnesis.ru/ehr-demo</a></p>
+<p style="font-family:'Courier New', monospace;font-size:30px;color:#0f0d22">login and password: issued on request</p>
 </div>
-<aside>The hosted demo uses only the anonymized check-ups and GigaChat (Lite and Max); access requires a Keycloak account with the ehr-demo role. Tabs: Ask (questions from the test set, starred showcase first), Tool-use dashboard (accuracy by system, which tools each model calls, harness interventions, effort), Recorded runs (final-run episodes with traces). Suggested questions: LDL of a check-up patient; dapagliflozin dose in an inpatient record; haemoglobin of P005 (shifted export, should be refused); whole-record report with the dossier.</aside>
+<div style="flex:1;background:#ffffff;border:1px solid #d6d8ff;border-radius:20px;padding:28px 36px;display:flex;flex-direction:column;gap:10px">
+<p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Code, report, data</p>
+<p style="font-size:36px;font-weight:600"><a href="https://github.com/deogratiusx/GenAI_EHR">github.com/deogratiusx/GenAI_EHR</a></p>
+<p style="font-size:26px;color:#4a4560">Keycloak sign-in at auth.ai-mnesis.ru · check-up records only · GigaChat Max and Lite</p>
+</div>
+</div>
+<aside>The hosted demo uses only the anonymized check-ups and GigaChat (Lite and Max); access requires a Keycloak account with the ehr-demo role. Tabs: Ask (questions from the test set, starred showcase first), Tool-use dashboard (accuracy by system, which tools each model calls, harness interventions, effort), Recorded runs (final-run episodes with traces). Suggested questions (all check-ups): LDL of P003; haemoglobin of P005 (shifted export, should be refused); colonoscopy findings of P003; whole-record report of P003 with the dossier. The GigaChat key allows one request at a time.</aside>
 </section>

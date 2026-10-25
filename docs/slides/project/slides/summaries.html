@@ -1,4 +1,4 @@
-<section id="summaries" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:44px">
+<section id="summaries" style="background:#fbfaff;color:#1f1b3a;font-family:'Inter', Arial, sans-serif;padding:96px 128px 72px;display:flex;flex-direction:column;gap:28px">
 <div style="display:flex;flex-direction:column;gap:16px">
 <p style="font-size:24px;font-weight:600;color:#791cbe;letter-spacing:2px;text-transform:uppercase">Whole-record summary and dynamics</p>
 <h2 style="font-family:'Onest', Arial, sans-serif;font-size:64px;font-weight:700;color:#0f0d22;line-height:1.15">Recall is the code’s job, the verdict is the model’s</h2>
@@ -19,14 +19,11 @@
 <p style="font-size:26px;line-height:1.4;color:#4a4560">Every must-mention item covered or explicitly dismissed; no “normal” for a flagged value; trend direction matches the series</p>
 </div>
 </div>
-<div style="display:flex;gap:32px">
-<div style="flex:1;background:#f3eeff;border:2px dashed #791cbe;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:8px">
-<p style="font-size:26px;color:#791cbe">Smoke run, GigaChat Lite, 6 hand-written checklists</p>
-<p style="font-size:30px;line-height:1.4;color:#0f0d22">Checklist: tools 0.03 → report 0.80 · critical recall 0.00 → 0.97 · without checks 0.63 / 0.80</p>
-</div>
-<div style="flex:1;background:#f3eeff;border:2px dashed #791cbe;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:8px">
-<p style="font-size:26px;color:#791cbe">Final run, all models</p>
-<p style="font-size:30px;line-height:1.4;color:#0f0d22">[[RESULT: report vs tools, checklist and critical recall per model]]</p>
+<div style="display:flex;gap:32px;align-items:center">
+<img src="/_blob/3726307e16c515b2f7902499cd6f8530" alt="Bar chart of critical recall, tools versus report, per model" style="width:900px;height:520px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<p style="font-size:28px;line-height:1.45;color:#0f0d22"><b>Critical recall</b> (share of must-mention items covered) rises for every model, 9 inpatient and check-up records each.</p>
+<p style="font-size:24px;line-height:1.45;color:#4a4560">On the 6 hand-written checklists the effect is mixed: Qwen 0.71 → 0.87, Max 0.72 → 0.72, Med-Qwen 0.60 → 0.40. The system was tuned on these summaries: an in-sample estimate.</p>
 </div>
 </div>
 <aside>Dynamics use the reference change value from biological variation: a change below RCV is measurement noise. Trends exist only in inpatient records, where labs repeat 3–5 times; each check-up is a single day.</aside>
